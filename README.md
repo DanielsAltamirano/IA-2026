@@ -18,4 +18,4 @@ Este espacio está dedicado a documentar el progreso y las tareas realizadas dur
 
 
 ---
-* Daniels John Altamirano Ramírez.*
+*Daniels John Altamirano Ramírez.*
