@@ -1,0 +1,8 @@
+# Modelos entrenados generados (superan el límite de 100MB de GitHub)
+modelo*.xml
+*.xml
+!data/*.xml
+
+# Python
+__pycache__/
+*.py[cod]
