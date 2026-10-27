@@ -9,7 +9,7 @@ def reconocer_rostros():
 
     # Cargar etiquetas
     if not os.path.exists("labels.json"):
-        print("Error: No se encontró 'labels.json'. Ejecuta primero 'rconociminto_facial.py' para entrenar.")
+        print("Error: No se encontró 'labels.json'. Ejecuta primero '2_entrenar_modelo.py' para entrenar.")
         return
 
     with open("labels.json", "r", encoding="utf-8") as f:
