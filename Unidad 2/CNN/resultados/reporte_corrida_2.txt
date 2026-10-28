@@ -1,0 +1,42 @@
+======================================================================
+Corrida 2 - Más Épocas y Doble de Neuronas Densas
+======================================================================
+Cambios realizados: Aumento de épocas (20 -> 30) y duplicación de neuronas en la capa densa (32 -> 64)
+Épocas: 30
+Batch Size: 64
+Learning Rate: 0.001
+Optimizador: SGD (lr=0.001)
+Filtros Conv2D: [32]
+Neuronas Capa Densa: 64
+Dropout (Conv / Dense): 0.5 / 0.5
+Total de Parámetros: 317,002
+Tiempo de Entrenamiento: 146.23 segundos
+
+--- RESULTADOS FINALES ---
+Train Loss Final:      0.6273
+Train Accuracy Final:  0.8076 (80.76%)
+Val Loss Final:        0.4519
+Val Accuracy Final:    0.8768 (87.68%)
+Test Loss:             0.4611
+Test Accuracy:         0.8765 (87.65%)
+Etiquetas Correctas:   13521 / 15426
+Etiquetas Incorrectas: 1905 / 15426
+
+--- CLASSIFICATION REPORT (TEST SET) ---
+                     precision    recall  f1-score   support
+
+Class 0 (americano)     0.6814    0.7689    0.7225      1800
+   Class 1 (basket)     0.8882    0.9108    0.8994      1761
+ Class 2 (beisball)     0.8516    0.7833    0.8160      1597
+    Class 3 (boxeo)     0.9168    0.9566    0.9363      1428
+ Class 4 (ciclismo)     0.9712    0.9898    0.9804      1465
+       Class 5 (f1)     0.8194    0.5592    0.6647      1014
+   Class 6 (futbol)     0.9583    0.8508    0.9014      1568
+     Class 7 (golf)     0.8075    0.9003    0.8514      1976
+ Class 8 (natacion)     0.9523    0.9699    0.9610      1030
+    Class 9 (tenis)     0.9922    1.0000    0.9961      1787
+
+           accuracy                         0.8765     15426
+          macro avg     0.8839    0.8690    0.8729     15426
+       weighted avg     0.8794    0.8765    0.8752     15426
+

@@ -1,0 +1,42 @@
+======================================================================
+Corrida 1 - Modelo Base Original
+======================================================================
+Cambios realizados: Configuración base: 20 épocas, batch_size=64, Conv2D(32) + Dense(32), Dropout=0.5, SGD(lr=0.001)
+Épocas: 20
+Batch Size: 64
+Learning Rate: 0.001
+Optimizador: SGD (lr=0.001)
+Filtros Conv2D: [32]
+Neuronas Capa Densa: 32
+Dropout (Conv / Dense): 0.5 / 0.5
+Total de Parámetros: 158,954
+Tiempo de Entrenamiento: 113.82 segundos
+
+--- RESULTADOS FINALES ---
+Train Loss Final:      0.9112
+Train Accuracy Final:  0.7013 (70.13%)
+Val Loss Final:        0.6587
+Val Accuracy Final:    0.8340 (83.40%)
+Test Loss:             0.6675
+Test Accuracy:         0.8303 (83.03%)
+Etiquetas Correctas:   12808 / 15426
+Etiquetas Incorrectas: 2618 / 15426
+
+--- CLASSIFICATION REPORT (TEST SET) ---
+                     precision    recall  f1-score   support
+
+Class 0 (americano)     0.6825    0.6400    0.6606      1800
+   Class 1 (basket)     0.7957    0.8671    0.8299      1761
+ Class 2 (beisball)     0.7822    0.7332    0.7569      1597
+    Class 3 (boxeo)     0.8674    0.9027    0.8847      1428
+ Class 4 (ciclismo)     0.9549    0.9829    0.9687      1465
+       Class 5 (f1)     0.8044    0.4665    0.5905      1014
+   Class 6 (futbol)     0.9135    0.8010    0.8536      1568
+     Class 7 (golf)     0.6995    0.8775    0.7785      1976
+ Class 8 (natacion)     0.9184    0.9505    0.9342      1030
+    Class 9 (tenis)     0.9819    1.0000    0.9909      1787
+
+           accuracy                         0.8303     15426
+          macro avg     0.8400    0.8221    0.8248     15426
+       weighted avg     0.8328    0.8303    0.8265     15426
+

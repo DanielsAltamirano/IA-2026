@@ -36,3 +36,9 @@ modelo*.xml
 # Binarios ejecutables (manteniendo percep.exe según requerimiento)
 *.exe
 !**/percep.exe
+
+# Dataset de imágenes deportivas (CNN)
+**/sportimages/
+**/sportimages.zip
+sportimages/
+sportimages.zip

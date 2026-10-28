@@ -1,0 +1,149 @@
+# 📊 Reporte Comparativo de 5 Corridas — Red Neuronal Convolucional (CNN SportImages)
+
+## 1. Descripción del Dataset
+- **Total de imágenes leídas:** `77,128` imágenes RGB de dimensión `21x28x3`.
+- **Clases (10 deportes):** `0: americano`, `1: basket`, `2: beisball`, `3: boxeo`, `4: ciclismo`, `5: f1`, `6: futbol`, `7: golf`, `8: natacion`, `9: tenis`.
+- **Partición de datos:** Entrenamiento (`49,361`), Validación (`12,341`), Prueba (`15,426`).
+
+## 2. Tabla Comparativa de Hiperparámetros y Resultados
+
+| Corrida | Cambios Principales | Épocas | Batch | Optimizador (LR) | Capas Conv2D | Capa Densa | Dropout (C/D) | Parámetros | Train Acc | Val Acc | Test Loss | Test Accuracy | Aciertos (Test) | Tiempo |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **1** | Configuración base: 20 épocas, batch_size=64, Conv2D(32) + Dense(32), Dropout=0.5, SGD(lr=0.001) | 20 | 64 | SGD (lr=0.001) | `[32]` | `32` | `0.5/0.5` | 158,954 | 70.13% | 83.40% | 0.6675 | **83.03%** | 12,808/15,426 | 113.82s |
+| **2** | Aumento de épocas (20 -> 30) y duplicación de neuronas en la capa densa (32 -> 64) | 30 | 64 | SGD (lr=0.001) | `[32]` | `64` | `0.5/0.5` | 317,002 | 80.76% | 87.68% | 0.4611 | **87.65%** | 13,521/15,426 | 146.23s |
+| **3** | Menos épocas (15), aumento de filtros Conv2D (32 -> 64), neuronas Dense (128), menor Dropout (0.4) y mayor LR (0.005) | 15 | 64 | SGD (lr=0.005) | `[64]` | `128` | `0.4/0.4` | 1,264,778 | 93.07% | 95.26% | 0.1743 | **95.14%** | 14,677/15,426 | 144.51s |
+| **4** | Adición de 2da capa Conv2D (32 y 64 filtros), batch_size=128, Dropout conv=0.25 y SGD con momentum=0.9 (lr=0.01) | 20 | 128 | SGD (lr=0.01, momentum=0.9) | `[32, 64]` | `64` | `0.25/0.5` | 192,138 | 98.35% | 99.63% | 0.0143 | **99.67%** | 15,375/15,426 | 189.12s |
+| **5** | 12 épocas, batch_size=128, 2 bloques Conv2D (64 y 128 filtros), Dense(128) y cambio de optimizador a Adam (lr=0.001) | 12 | 128 | Adam (lr=0.001) | `[64, 128]` | `128` | `0.25/0.5` | 765,194 | 99.46% | 99.71% | 0.0111 | **99.80%** | 15,395/15,426 | 279.71s |
+
+## 3. Gráfica Comparativa de las 5 Corridas
+
+![Comparativa 5 Corridas](comparativa_5_corridas.png)
+
+## 4. Detalle y Classification Report por Corrida
+
+### 🔹 Corrida 1 - Modelo Base Original
+- **Modificación:** Configuración base: 20 épocas, batch_size=64, Conv2D(32) + Dense(32), Dropout=0.5, SGD(lr=0.001)
+- **Test Loss:** `0.6675` | **Test Accuracy:** `83.03%` (12,808 aciertos y 2,618 errores de 15,426)
+
+![Gráfica Corrida 1](grafica_corrida_1.png)
+
+```text
+precision    recall  f1-score   support
+
+Class 0 (americano)     0.6825    0.6400    0.6606      1800
+   Class 1 (basket)     0.7957    0.8671    0.8299      1761
+ Class 2 (beisball)     0.7822    0.7332    0.7569      1597
+    Class 3 (boxeo)     0.8674    0.9027    0.8847      1428
+ Class 4 (ciclismo)     0.9549    0.9829    0.9687      1465
+       Class 5 (f1)     0.8044    0.4665    0.5905      1014
+   Class 6 (futbol)     0.9135    0.8010    0.8536      1568
+     Class 7 (golf)     0.6995    0.8775    0.7785      1976
+ Class 8 (natacion)     0.9184    0.9505    0.9342      1030
+    Class 9 (tenis)     0.9819    1.0000    0.9909      1787
+
+           accuracy                         0.8303     15426
+          macro avg     0.8400    0.8221    0.8248     15426
+       weighted avg     0.8328    0.8303    0.8265     15426
+```
+
+### 🔹 Corrida 2 - Más Épocas y Doble de Neuronas Densas
+- **Modificación:** Aumento de épocas (20 -> 30) y duplicación de neuronas en la capa densa (32 -> 64)
+- **Test Loss:** `0.4611` | **Test Accuracy:** `87.65%` (13,521 aciertos y 1,905 errores de 15,426)
+
+![Gráfica Corrida 2](grafica_corrida_2.png)
+
+```text
+precision    recall  f1-score   support
+
+Class 0 (americano)     0.6814    0.7689    0.7225      1800
+   Class 1 (basket)     0.8882    0.9108    0.8994      1761
+ Class 2 (beisball)     0.8516    0.7833    0.8160      1597
+    Class 3 (boxeo)     0.9168    0.9566    0.9363      1428
+ Class 4 (ciclismo)     0.9712    0.9898    0.9804      1465
+       Class 5 (f1)     0.8194    0.5592    0.6647      1014
+   Class 6 (futbol)     0.9583    0.8508    0.9014      1568
+     Class 7 (golf)     0.8075    0.9003    0.8514      1976
+ Class 8 (natacion)     0.9523    0.9699    0.9610      1030
+    Class 9 (tenis)     0.9922    1.0000    0.9961      1787
+
+           accuracy                         0.8765     15426
+          macro avg     0.8839    0.8690    0.8729     15426
+       weighted avg     0.8794    0.8765    0.8752     15426
+```
+
+### 🔹 Corrida 3 - Más Filtros/Neuronas y Mayor Learning Rate
+- **Modificación:** Menos épocas (15), aumento de filtros Conv2D (32 -> 64), neuronas Dense (128), menor Dropout (0.4) y mayor LR (0.005)
+- **Test Loss:** `0.1743` | **Test Accuracy:** `95.14%` (14,677 aciertos y 749 errores de 15,426)
+
+![Gráfica Corrida 3](grafica_corrida_3.png)
+
+```text
+precision    recall  f1-score   support
+
+Class 0 (americano)     0.9106    0.8544    0.8816      1800
+   Class 1 (basket)     0.9610    0.9512    0.9561      1761
+ Class 2 (beisball)     0.9344    0.9361    0.9353      1597
+    Class 3 (boxeo)     0.9600    0.9909    0.9752      1428
+ Class 4 (ciclismo)     0.9993    0.9966    0.9979      1465
+       Class 5 (f1)     0.8694    0.8866    0.8779      1014
+   Class 6 (futbol)     0.9820    0.9401    0.9606      1568
+     Class 7 (golf)     0.9090    0.9661    0.9367      1976
+ Class 8 (natacion)     0.9923    0.9951    0.9937      1030
+    Class 9 (tenis)     0.9978    1.0000    0.9989      1787
+
+           accuracy                         0.9514     15426
+          macro avg     0.9516    0.9517    0.9514     15426
+       weighted avg     0.9517    0.9514    0.9513     15426
+```
+
+### 🔹 Corrida 4 - Dos Capas Convolucionales + SGD con Momentum + Batch 128
+- **Modificación:** Adición de 2da capa Conv2D (32 y 64 filtros), batch_size=128, Dropout conv=0.25 y SGD con momentum=0.9 (lr=0.01)
+- **Test Loss:** `0.0143` | **Test Accuracy:** `99.67%` (15,375 aciertos y 51 errores de 15,426)
+
+![Gráfica Corrida 4](grafica_corrida_4.png)
+
+```text
+precision    recall  f1-score   support
+
+Class 0 (americano)     0.9873    0.9939    0.9906      1800
+   Class 1 (basket)     0.9977    0.9955    0.9966      1761
+ Class 2 (beisball)     0.9956    0.9981    0.9969      1597
+    Class 3 (boxeo)     0.9993    0.9993    0.9993      1428
+ Class 4 (ciclismo)     0.9959    0.9993    0.9976      1465
+       Class 5 (f1)     0.9970    0.9901    0.9936      1014
+   Class 6 (futbol)     0.9994    0.9943    0.9968      1568
+     Class 7 (golf)     0.9975    0.9960    0.9967      1976
+ Class 8 (natacion)     0.9990    1.0000    0.9995      1030
+    Class 9 (tenis)     1.0000    1.0000    1.0000      1787
+
+           accuracy                         0.9967     15426
+          macro avg     0.9969    0.9966    0.9968     15426
+       weighted avg     0.9967    0.9967    0.9967     15426
+```
+
+### 🔹 Corrida 5 - Red Profunda (64 y 128 Filtros) + Optimizador Adam (12 Épocas)
+- **Modificación:** 12 épocas, batch_size=128, 2 bloques Conv2D (64 y 128 filtros), Dense(128) y cambio de optimizador a Adam (lr=0.001)
+- **Test Loss:** `0.0111` | **Test Accuracy:** `99.80%` (15,395 aciertos y 31 errores de 15,426)
+
+![Gráfica Corrida 5](grafica_corrida_5.png)
+
+```text
+                     precision    recall  f1-score   support
+
+Class 0 (americano)     0.9994    0.9911    0.9953      1800
+   Class 1 (basket)     0.9994    0.9966    0.9980      1761
+ Class 2 (beisball)     0.9919    1.0000    0.9959      1597
+    Class 3 (boxeo)     0.9965    1.0000    0.9983      1428
+ Class 4 (ciclismo)     0.9993    0.9980    0.9986      1465
+       Class 5 (f1)     0.9970    0.9961    0.9965      1014
+   Class 6 (futbol)     0.9981    1.0000    0.9990      1568
+     Class 7 (golf)     0.9985    0.9990    0.9987      1976
+ Class 8 (natacion)     0.9990    1.0000    0.9995      1030
+    Class 9 (tenis)     1.0000    1.0000    1.0000      1787
+
+           accuracy                         0.9980     15426
+          macro avg     0.9979    0.9981    0.9980     15426
+       weighted avg     0.9980    0.9980    0.9980     15426
+
+```
+

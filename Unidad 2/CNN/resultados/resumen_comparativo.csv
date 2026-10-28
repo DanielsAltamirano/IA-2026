@@ -1,0 +1,6 @@
+Corrida,Nombre,Epocas,Batch_Size,Learning_Rate,Optimizador,Filtros_Conv2D,Neuronas_Dense,Dropout_Conv,Dropout_Dense,Parametros_Totales,Train_Loss,Train_Accuracy,Val_Loss,Val_Accuracy,Test_Loss,Test_Accuracy,Aciertos_Test,Errores_Test,Tiempo_Seg
+1,Corrida 1 - Modelo Base Original,20,64,0.001,SGD (lr=0.001),[32],32,0.5,0.5,158954,0.9112,0.7013,0.6587,0.834,0.6675,0.8303,12808,2618,113.82
+2,Corrida 2 - Más Épocas y Doble de Neuronas Densas,30,64,0.001,SGD (lr=0.001),[32],64,0.5,0.5,317002,0.6273,0.8076,0.4519,0.8768,0.4611,0.8765,13521,1905,146.23
+3,Corrida 3 - Más Filtros/Neuronas y Mayor Learning Rate,15,64,0.005,SGD (lr=0.005),[64],128,0.4,0.4,1264778,0.2381,0.9307,0.1726,0.9526,0.1743,0.9514,14677,749,144.51
+4,Corrida 4 - Dos Capas Convolucionales + SGD con Momentum + Batch 128,20,128,0.01,"SGD (lr=0.01, momentum=0.9)","[32, 64]",64,0.25,0.5,192138,0.0506,0.9835,0.0146,0.9963,0.0143,0.9967,15375,51,189.12
+5,Corrida 5 - Red Profunda (64 y 128 Filtros) + Optimizador Adam (12 Épocas),12,128,0.001,Adam (lr=0.001),"[64, 128]",128,0.25,0.5,765194,0.0174,0.9946,0.0114,0.9971,0.0111,0.998,15395,31,279.71

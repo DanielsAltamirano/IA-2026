@@ -1,0 +1,42 @@
+======================================================================
+Corrida 4 - Dos Capas Convolucionales + SGD con Momentum + Batch 128
+======================================================================
+Cambios realizados: Adición de 2da capa Conv2D (32 y 64 filtros), batch_size=128, Dropout conv=0.25 y SGD con momentum=0.9 (lr=0.01)
+Épocas: 20
+Batch Size: 128
+Learning Rate: 0.01
+Optimizador: SGD (lr=0.01, momentum=0.9)
+Filtros Conv2D: [32, 64]
+Neuronas Capa Densa: 64
+Dropout (Conv / Dense): 0.25 / 0.5
+Total de Parámetros: 192,138
+Tiempo de Entrenamiento: 189.12 segundos
+
+--- RESULTADOS FINALES ---
+Train Loss Final:      0.0506
+Train Accuracy Final:  0.9835 (98.35%)
+Val Loss Final:        0.0146
+Val Accuracy Final:    0.9963 (99.63%)
+Test Loss:             0.0143
+Test Accuracy:         0.9967 (99.67%)
+Etiquetas Correctas:   15375 / 15426
+Etiquetas Incorrectas: 51 / 15426
+
+--- CLASSIFICATION REPORT (TEST SET) ---
+                     precision    recall  f1-score   support
+
+Class 0 (americano)     0.9873    0.9939    0.9906      1800
+   Class 1 (basket)     0.9977    0.9955    0.9966      1761
+ Class 2 (beisball)     0.9956    0.9981    0.9969      1597
+    Class 3 (boxeo)     0.9993    0.9993    0.9993      1428
+ Class 4 (ciclismo)     0.9959    0.9993    0.9976      1465
+       Class 5 (f1)     0.9970    0.9901    0.9936      1014
+   Class 6 (futbol)     0.9994    0.9943    0.9968      1568
+     Class 7 (golf)     0.9975    0.9960    0.9967      1976
+ Class 8 (natacion)     0.9990    1.0000    0.9995      1030
+    Class 9 (tenis)     1.0000    1.0000    1.0000      1787
+
+           accuracy                         0.9967     15426
+          macro avg     0.9969    0.9966    0.9968     15426
+       weighted avg     0.9967    0.9967    0.9967     15426
+

@@ -1,0 +1,42 @@
+======================================================================
+Corrida 5 - Red Profunda (64 y 128 Filtros) + Optimizador Adam (12 Épocas)
+======================================================================
+Cambios realizados: 12 épocas, batch_size=128, 2 bloques Conv2D (64 y 128 filtros), Dense(128) y cambio de optimizador a Adam (lr=0.001)
+Épocas: 12
+Batch Size: 128
+Learning Rate: 0.001
+Optimizador: Adam (lr=0.001)
+Filtros Conv2D: [64, 128]
+Neuronas Capa Densa: 128
+Dropout (Conv / Dense): 0.25 / 0.5
+Total de Parámetros: 765,194
+Tiempo de Entrenamiento: 279.71 segundos
+
+--- RESULTADOS FINALES ---
+Train Loss Final:      0.0174
+Train Accuracy Final:  0.9946 (99.46%)
+Val Loss Final:        0.0114
+Val Accuracy Final:    0.9971 (99.71%)
+Test Loss:             0.0111
+Test Accuracy:         0.9980 (99.80%)
+Etiquetas Correctas:   15395 / 15426
+Etiquetas Incorrectas: 31 / 15426
+
+--- CLASSIFICATION REPORT (TEST SET) ---
+                     precision    recall  f1-score   support
+
+Class 0 (americano)     0.9994    0.9911    0.9953      1800
+   Class 1 (basket)     0.9994    0.9966    0.9980      1761
+ Class 2 (beisball)     0.9919    1.0000    0.9959      1597
+    Class 3 (boxeo)     0.9965    1.0000    0.9983      1428
+ Class 4 (ciclismo)     0.9993    0.9980    0.9986      1465
+       Class 5 (f1)     0.9970    0.9961    0.9965      1014
+   Class 6 (futbol)     0.9981    1.0000    0.9990      1568
+     Class 7 (golf)     0.9985    0.9990    0.9987      1976
+ Class 8 (natacion)     0.9990    1.0000    0.9995      1030
+    Class 9 (tenis)     1.0000    1.0000    1.0000      1787
+
+           accuracy                         0.9980     15426
+          macro avg     0.9979    0.9981    0.9980     15426
+       weighted avg     0.9980    0.9980    0.9980     15426
+
